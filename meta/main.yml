@@ -7,7 +7,7 @@ galaxy_info:
   galaxy_tags: []
   platforms:
     - name: Ubuntu
-    versions:
-      - bionic
+      versions:
+        - bionic
 
 dependencies: []
