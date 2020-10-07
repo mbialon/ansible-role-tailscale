@@ -1,16 +1,17 @@
 ---
-- name: tailscale repository key
+- name: Add Tailscale repository key
   apt_key:
     url: https://pkgs.tailscale.com/stable/ubuntu/bionic.gpg
     state: present
-- name: tailscale repository
+- name: Add Tailscale repository
   apt_repository:
     repo: deb https://pkgs.tailscale.com/stable/ubuntu bionic main
     filename: tailscale
     state: present
-- name: install packages
+- name: Install packages
   apt:
     name:
       - tailscale
     state: present
-- debug: msg="run tailscale up"
+- name: Connect machine to your Tailscale network
+  command: tailscale up -authkey {{ tailscale_authkey }}
