@@ -15,3 +15,4 @@
     state: present
 - name: Connect machine to your Tailscale network
   command: tailscale up -authkey {{ tailscale_authkey }}
+  changed_when: no
