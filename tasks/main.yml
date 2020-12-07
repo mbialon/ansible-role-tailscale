@@ -1,13 +1,13 @@
 ---
 - name: Add Tailscale repository key
   apt_key:
-    url: https://pkgs.tailscale.com/stable/ubuntu/bionic.gpg
+    url: "https://pkgs.tailscale.com/stable/ubuntu/{{ ansible_distribution_release }}.gpg"
     state: present
   become: true
 
 - name: Add Tailscale repository
   apt_repository:
-    repo: deb https://pkgs.tailscale.com/stable/ubuntu bionic main
+    repo: "deb https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
     filename: tailscale
     state: present
   become: true
