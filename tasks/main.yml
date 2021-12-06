@@ -12,10 +12,9 @@
     state: present
   become: true
 
-- name: Install packages
+- name: Install Tailscale package
   apt:
-    name:
-      - tailscale
+    name: tailscale={{ tailscale_version }}
     state: present
   become: true
 
