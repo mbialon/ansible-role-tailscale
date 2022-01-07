@@ -8,6 +8,12 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
+        - xenial
         - bionic
+        - eoan
+        - focal
+        - groovy
+        - hirsute
+        - impish
 
 dependencies: []
