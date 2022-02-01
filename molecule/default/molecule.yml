@@ -8,6 +8,10 @@ platforms:
     image: ubuntu-20.04
     pre_build_image: false
     dockerfile: Dockerfile.ubuntu.j2
+  - name: debian-bullseye
+    image: debian:bullseye
+    pre_build_image: false
+    dockerfile: Dockerfile.debian.j2
 provisioner:
   name: ansible
 verifier:

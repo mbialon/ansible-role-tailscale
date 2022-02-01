@@ -1,0 +1,26 @@
+---
+- name: Ensure dependencies are installed.
+  apt:
+    name:
+      - ca-certificates
+    state: present
+  become: true
+
+- name: Download Tailscale repository key
+  get_url:
+    url: https://pkgs.tailscale.com/stable/debian/{{ ansible_distribution_release }}.noarmor.gpg
+    dest: /usr/share/keyrings/tailscale-archive-keyring.gpg
+    mode: '0644'
+  become: true
+
+- name: Download Tailscale repository
+  get_url:
+    url: https://pkgs.tailscale.com/stable/debian/{{ ansible_distribution_release }}.tailscale-keyring.list
+    dest: /etc/apt/sources.list.d/tailscale.list
+    mode: '0644'
+  become: true
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: true

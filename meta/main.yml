@@ -15,5 +15,9 @@ galaxy_info:
         - groovy
         - hirsute
         - impish
+    - name: Debian
+      versions:
+        - bookworm
+        - bullseye
 
 dependencies: []
