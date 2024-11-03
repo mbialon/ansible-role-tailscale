@@ -13,5 +13,6 @@
 
 - name: Connect machine to your Tailscale network
   command: tailscale up -authkey {{ tailscale_authkey }}
+  when: tailscale_authkey is defined
   changed_when: no
   become: true
