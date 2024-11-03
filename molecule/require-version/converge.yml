@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include role"
+      include_role:
+        name: "ansible-role-tailscale"
+      vars:
+        tailscale_version: "1.72.1"
