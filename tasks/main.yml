@@ -5,10 +5,18 @@
 - include_tasks: setup-Debian.yml
   when: ansible_distribution == 'Debian'
 
-- name: Install Tailscale package
+- name: Install Tailscale (version)
   package:
     name: tailscale={{ tailscale_version }}
     state: present
+  when: tailscale_version is defined
+  become: true
+
+- name: Install Tailscale (latest)
+  package:
+    name: tailscale
+    state: present
+  when: tailscale_version is not defined
   become: true
 
 - name: Connect machine to your Tailscale network
