@@ -1,26 +1,28 @@
 ---
-- include_tasks: setup-Ubuntu.yml
+- name: Setup Ubuntu
+  ansible.builtin.include_tasks: setup-Ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
 
-- include_tasks: setup-Debian.yml
+- name: Setup Debian
+  ansible.builtin.include_tasks: setup-Debian.yml
   when: ansible_distribution == 'Debian'
 
 - name: Install Tailscale (version)
-  package:
+  ansible.builtin.package:
     name: tailscale={{ tailscale_version }}
     state: present
   when: tailscale_version is defined
   become: true
 
 - name: Install Tailscale (latest)
-  package:
+  ansible.builtin.package:
     name: tailscale
     state: present
   when: tailscale_version is not defined
   become: true
 
 - name: Connect machine to your Tailscale network
-  command: tailscale up -authkey {{ tailscale_authkey }}
+  ansible.builtin.command: tailscale up -authkey {{ tailscale_authkey }}
   when: tailscale_authkey is defined
-  changed_when: no
+  changed_when: false
   become: true
