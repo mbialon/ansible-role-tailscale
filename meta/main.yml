@@ -3,7 +3,7 @@ galaxy_info:
   author: mbialon
   description: Install Tailscale.
   license: BSD-3-Clause
-  min_ansible_version: 2.9
+  min_ansible_version: "2.9"
   galaxy_tags: []
   platforms:
     - name: Ubuntu
