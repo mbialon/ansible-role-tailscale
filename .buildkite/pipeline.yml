@@ -18,4 +18,6 @@ steps:
       - docker#v5.13.0:
           image: "python:3-slim"
           environment:
-            - "GALAXY_API_KEY"
+            - GALAXY_API_KEY
+    secrets:
+      - GALAXY_API_KEY
