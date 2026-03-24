@@ -1,0 +1,21 @@
+steps:
+  - label: ":ansible: Lint"
+    command:
+      - pip install ansible-lint
+      - ansible-lint .
+    plugins:
+      - docker#v5.13.0:
+          image: "python:3-slim"
+
+  - wait: ~
+
+  - label: ":rocket: Release to Galaxy"
+    if: build.tag != null
+    command:
+      - pip install ansible-core
+      - ansible-galaxy role import --api-key "$$GALAXY_API_KEY" mbialon ansible-role-tailscale
+    plugins:
+      - docker#v5.13.0:
+          image: "python:3-slim"
+          environment:
+            - "GALAXY_API_KEY"
