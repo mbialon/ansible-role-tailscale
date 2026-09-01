@@ -1,0 +1,10 @@
+[project]
+name = "ansible-role-tailscale"
+version = "0.0.0"
+requires-python = ">=3.11"
+
+[dependency-groups]
+dev = ["ansible", "ansible-lint"]
+
+[tool.uv]
+package = false
